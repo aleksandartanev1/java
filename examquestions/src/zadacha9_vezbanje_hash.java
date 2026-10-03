@@ -1,0 +1,92 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class zadacha9_vezbanje_hash {
+    static class Spender {
+        String name;
+        String surname;
+        int budget;
+        String ip;
+        String time;
+        String city;
+        int price;
+
+        public Spender(String name, String surname, int budget, String ip, String time, String city, int price) {
+            this.name = name;
+            this.surname = surname;
+            this.budget = budget;
+            this.ip = ip;
+            this.time = time;
+            this.city = city;
+            this.price = price;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+        int n = inp.nextInt();
+        Map<String, Integer> mapata = new HashMap<>();
+        Map<String, Spender> spenderlist = new HashMap<>();
+        for(int i = 0; i < n; i++) {
+            String name = inp.next();
+            String surname = inp.next();
+            int budget = inp.nextInt();
+            String ip = inp.next();
+            String time = inp.next();
+            String city = inp.next();
+            int price = inp.nextInt();
+
+            Spender earlyspender = new Spender(name, surname, budget, ip, time, city, price);
+
+            String[] timestamp = time.split(":");
+
+            int hours = Integer.parseInt(timestamp[0]);
+            int minutes = Integer.parseInt(timestamp[1]);
+
+            if(hours >= 12) {
+                mapata.put(city, mapata.getOrDefault(city, 0) + 1);
+                Spender existing = spenderlist.get(city);
+                if(existing == null) {
+                    spenderlist.put(city, earlyspender);
+                }
+                if(existing != null) {
+                    String[] existingtimestamp = existing.time.split(":");
+
+                    int existinghours = Integer.parseInt(existingtimestamp[0]);
+                    int existingminutes = Integer.parseInt(existingtimestamp[1]);
+                    if(hours < existinghours) {
+                        spenderlist.put(city, earlyspender);
+                    } else {
+                        if (hours == existinghours) {
+                            if(minutes < existingminutes) {
+                                spenderlist.put(city, earlyspender);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+
+        }
+
+        int m = inp.nextInt();
+        for(int i = 0; i < m; i++) {
+            String name = inp.next();
+            String surname = inp.next();
+            int budget = inp.nextInt();
+            String ip = inp.next();
+            String time = inp.next();
+            String city = inp.next();
+            int price = inp.nextInt();
+            System.out.println("City: "+city+" has the following number of customers:");
+            System.out.println(mapata.get(city));
+            System.out.println("The user who logged on earliest after noon from that city is:");
+            System.out.println(spenderlist.get(city).name +" "+ spenderlist.get(city).surname + " with salary "+spenderlist.get(city).budget + " from address "+spenderlist.get(city).ip + " who logged in at "+ spenderlist.get(city).time);
+            System.out.println();
+        }
+    }
+
+}

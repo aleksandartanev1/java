@@ -1,0 +1,35 @@
+ZA STRINGOVI
+length() - ja naogja goleminata na stringot
+toUpperCase() - site bukvi stanuvat golemi
+toLowerCase() - site bukvi stanuvat mali
+indexOf() - naoga ja pozicijata na specifiran text vklucuvajki i prazni mesta
+charAt() - da najdesh specificna bukva vo daden string
+equals() - da sporedesh dva stringa
+trim() - da trgnesh prazno mesto vo pocetok i kraj na string
+concat() - da spoesh dva stringovi zaedno isto kako +
+//////////////////////////////////////////////////////////////////
+ZA MATEMATIKA
+Math.max(x,y) - go naoga najgolemiut broj od dva broja
+Math.min(x,y) - go naoga najmaliot broj od dva broja
+Math.sqrt(x) - go naoga korenot od broj
+Math.abs(x) - go naoga absolutnata (pozitivna) vrednost od broj
+Math.pow(x,y) - go naoga x na stepen y
+Math.round(x) - zaokruzuva na najblizok integer;
+Math.ceil(x) go vrakja najmaliot integer pogolem ili ednakov na x;
+Math.floor(x) - go vrakja najgolemiot integer pomal ili ednakov na x;
+Math.random() - vrakja random broj pomegu 0 i 1
+/////////////////////////////////////////////////////////////////
+PRIMER ZA NASLEDSTVO
+class Vehicle {
+  protected String brand = "Ford";        // Vehicle attribute
+  public void honk() {                    // Vehicle method
+    System.out.println("Tuut, tuut!");
+  }
+}
+
+class Car extends Vehicle
+/////////////////////////////////////////////////////////////////
+System.out.println() - za pecatenje text
+import java.util.*; - za importiranje scanner i drugi utliities
+Scanner usernameenter = new Scanner(System.in) - text scanner
+String username = usernameenter.nextLine(); - zima naredna linija shto se vnesuva
